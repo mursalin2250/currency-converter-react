@@ -9,10 +9,10 @@ const InputBox = () => {
                 <legend className=" text-md text-neutral-400">Currency Type</legend>
             </div>
             <div className='flex justify-between items-center'>
-                <input type="text" placeholder="Type here" className="input px-0 bg-white text-black placeholder:text-gray-400" />
-                <div class="dropdown dropdown-end">
-                    <div tabindex="0" role="button" class="btn text-black bg-neutral-200 border-0 shadow-none">Item</div>
-                    <ul tabindex="-1" class="dropdown-content menu bg-white rounded-box z-1 w-52 p-2">
+                <input type="number" placeholder="Amount" id='amount' className="input px-0 bg-white text-black placeholder:text-gray-400 text-lg outline-0 shadow-none border-0" value={0} onChange={(e) => {e.target.value}}/>
+                <div className="dropdown dropdown-end">
+                    <div tabIndex="0" role="button" className="btn text-black bg-neutral-200 border-0 shadow-none px-5">Item</div>
+                    <ul tabIndex="-1" className="dropdown-content menu bg-white rounded-box z-1 w-52 p-2">
                         <li className='text-black'><a>Item 1</a></li>
                         <li className='text-black'><a>Item 1</a></li>
                         
