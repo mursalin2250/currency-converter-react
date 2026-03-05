@@ -15,10 +15,14 @@ function App() {
 	const currencyOptions = Object.keys(currencyInfo);
 
 	const convert = () => {
-		setConvertedAmount(Number(amount) * currencyOptions[to]);
-		console.log(currencyOptions[to]);
-		console.log(typeof (amount));
-		console.log(typeof (convertedAmount));
+		setConvertedAmount(Number(amount) * currencyInfo[to]);
+	}
+
+	const swap = () => {
+		setFrom(to);
+		setTo(from);
+		setAmount(convertedAmount);
+		setConvertedAmount(amount)
 	}
 
 
@@ -31,9 +35,24 @@ function App() {
 					</div>
 					<form onSubmit={(e) => { e.preventDefault(); }} className='flex flex-col gap-4'>
 						<div className='flex flex-col justify-center items-center gap-5.5'>
-							<InputBox label="From" amount={amount} currency={from} currencyOptions={currencyOptions} onAmountChange={(amount) => (setAmount(amount))} />
-							<button className='btn py-1 leading-none btn-primary absolute'>Swap</button>
-							<InputBox label="To" amount={convertedAmount} currency={to} currencyOptions={currencyOptions} onAmountChange={(convertedAmount) => (setAmount(convertedAmount))} />
+							<InputBox 
+							label="From" 
+							amount={amount} 
+							currency={from} 
+							currencyOptions={currencyOptions} 
+							onAmountChange={(amount) => (setAmount(amount))} 
+							onCurrencyChange = {(currency) => {setFrom(currency)}} />
+
+							<button className='btn py-1 leading-none btn-primary absolute' onClick={swap}>Swap</button>
+
+							<InputBox 
+							label="To" 
+							amount={convertedAmount} 
+							currency={to} 
+							currencyOptions={currencyOptions} 
+							onAmountChange={(convertedAmount) => (setAmount(convertedAmount))} 
+							onCurrencyChange = {(currency) => {setTo(currency)}}
+							/>
 						</div>
 						<input type="submit" className='btn outline-0 border-0 bg-green-600' onClick={convert} />
 					</form>
